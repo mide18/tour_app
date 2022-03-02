@@ -1,9 +1,13 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tour_app/screen/signIn/sign_in_screen.dart';
 
 import '../models/user.dart';
 import '../provider/map_state_provider.dart';
 import '../repository/user_repository.dart';
+import 'map/map_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,14 +25,14 @@ class HomePage extends StatelessWidget {
               return Builder(
                 builder: (context) {
                   if (value.isVerified) {
-                    return MapViewWidget();
+                    return const MapViewWidget();
                   } else {
                     return AuthPageWidget(page: 2, uid: value.uid);
                   }
                 },
               );
             } else {
-              return AuthPageWidget(page: 0);
+              return const AuthPageWidget(page: 0);
             }
           },
         ),
@@ -37,14 +41,4 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class MapViewWidget extends StatelessWidget {
-  const MapViewWidget({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    final state = MapState();
-    return ChangeNotifierProvider(create: (_) => state,
-    child: ,
-    );
-  }
-}

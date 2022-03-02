@@ -7,7 +7,12 @@ import 'package:tour_app/screen/otp_screen.dart';
 import '../../constants/theme.dart';
 
 class AuthPage extends StatefulWidget {
-  const AuthPage({Key? key}) : super(key: key);
+  final int page;
+  final String? uid;
+  const AuthPage({Key? key,
+  this.page = 0,
+    this.uid
+  }) : super(key: key);
 
   @override
   _AuthPageState createState() => _AuthPageState();
@@ -324,5 +329,28 @@ class _AuthPageState extends State<AuthPage> {
         ],
       );
     });
+  }
+}
+
+class AuthPageWidget extends StatelessWidget {
+  final int page;
+  final String? uid;
+
+  const AuthPageWidget({
+    Key? key,
+    required this.page,
+    this.uid,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final state = AuthState(page, uid ?? '');
+    return ChangeNotifierProvider(
+      create: (_) => state,
+      child: ChangeNotifierProvider.value(
+        value: state,
+        child: AuthPage(page: page, uid: uid),
+      ),
+    );
   }
 }

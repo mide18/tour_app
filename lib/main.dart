@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tour_app/repository/user_repository.dart';
+import 'package:tour_app/screen/home_screen.dart';
 import 'package:tour_app/services/logger.dart';
 
 import 'constants/theme.dart';
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'City Cab',
       theme: TourTheme.theme,
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
